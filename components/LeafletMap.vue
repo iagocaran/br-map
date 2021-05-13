@@ -28,8 +28,10 @@ export default class LeafletMap extends Vue {
       accessToken: process.env.NUXT_ENV_MAPBOX_API_KEY
     }).addTo(mymap);
 
+    console.log(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + '/api')
     this.$axios.get(window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + '/api')
       .then((res) => {
+        console.log('Found ' + res.data.length + ' people')
         res.data.forEach((person: Person) => {
           let marker = L.marker([person.position.lat, person.position.long]).addTo(mymap);
           marker.bindPopup("<b>" + person.name + "</b><br />" + person.phone)
