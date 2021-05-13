@@ -8,8 +8,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - br-map',
-    title: 'br-map',
+    titleTemplate: '%s',
+    title: 'Mapa dos BR',
     htmlAttrs: {
       lang: 'en'
     },
