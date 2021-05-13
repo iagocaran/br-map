@@ -3,13 +3,17 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import 'leaflet/dist/leaflet.css';
 
-export default {
-  name: 'LeafletMap',
-  methods: {
-  },
-  mounted() {
+interface Person {
+  name: string;
+  phone: string;
+  position: { lat: number, long: number }
+}
+
+export default class LeafletMap extends Vue {
+  mounted () {
     const L = require('leaflet');
     let mymap = L.map('mapid').setView([48.85658, 2.35183], 10);
 
@@ -24,7 +28,7 @@ export default {
 
     this.$axios.get('/api')
       .then((res) => {
-        res.data.forEach((person) => {
+        res.data.forEach((person: Person) => {
           let marker = L.marker([person.position.lat, person.position.long]).addTo(mymap);
           marker.bindPopup("<b>" + person.name + "</b><br />" + person.phone)
         })
