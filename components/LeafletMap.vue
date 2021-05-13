@@ -5,6 +5,9 @@
 <script lang="ts">
 import Vue from 'vue'
 import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/images/marker-icon.png';
+import 'leaflet/dist/images/marker-icon-2x.png';
+import 'leaflet/dist/images/marker-shadow.png';
 import { Component } from "vue-property-decorator";
 
 interface Person {
@@ -33,8 +36,8 @@ export default class LeafletMap extends Vue {
       .then((res) => {
         console.log('Found ' + res.data.length + ' people')
         res.data.forEach((person: Person) => {
-          let marker = L.marker([person.position.lat, person.position.long]).addTo(mymap);
-          marker.bindPopup("<b>" + person.name + "</b><br />" + person.phone)
+          L.marker([person.position.lat, person.position.long]).addTo(mymap)
+            .bindPopup("<b>" + person.name + "</b><br />" + person.phone)
         })
       })
       .catch((err) => {
