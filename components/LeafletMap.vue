@@ -1,8 +1,5 @@
 <template>
-  <v-container>
-    <div id="mapid"></div>
-    <p>Hello darkness my old friend</p>
-  </v-container>
+  <div id="mapid"></div>
 </template>
 
 <script lang="ts">
@@ -38,6 +35,6 @@ export default {
 
 <style scoped>
 #mapid {
-  height: 500px;
+  height: 100%;
 }
 </style>
