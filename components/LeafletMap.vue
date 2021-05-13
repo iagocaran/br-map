@@ -5,6 +5,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import 'leaflet/dist/leaflet.css';
+import { Component } from "vue-property-decorator";
 
 interface Person {
   name: string;
@@ -12,6 +13,7 @@ interface Person {
   position: { lat: number, long: number }
 }
 
+@Component
 export default class LeafletMap extends Vue {
   mounted () {
     const L = require('leaflet');
