@@ -5,9 +5,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import 'leaflet/dist/leaflet.css';
-import '~/assets/marker-icon.png';
-import '~/assets/marker-icon-2x.png';
-import '~/assets/marker-shadow.png';
 import { Component } from "vue-property-decorator";
 
 interface Person {
@@ -20,7 +17,7 @@ interface Person {
 export default class LeafletMap extends Vue {
   mounted () {
     const L = require('leaflet');
-    L.Icon.Default.prototype.options.imagePath = '_nuxt/assets/'
+    L.Icon.Default.prototype.options.imagePath = '/'
     L.Icon.Default.prototype.options.iconUrl = 'marker-icon.png'
     L.Icon.Default.prototype.options.iconRetinaUrl = 'marker-icon-2x.png'
     L.Icon.Default.prototype.options.shadowUrl = 'marker-shadow.png'
