@@ -5,9 +5,9 @@
 <script lang="ts">
 import Vue from 'vue'
 import 'leaflet/dist/leaflet.css';
-import 'leaflet/dist/images/marker-icon.png';
-import 'leaflet/dist/images/marker-icon-2x.png';
-import 'leaflet/dist/images/marker-shadow.png';
+import '~/assets/marker-icon.png';
+import '~/assets/marker-icon-2x.png';
+import '~/assets/marker-shadow.png';
 import { Component } from "vue-property-decorator";
 
 interface Person {
@@ -20,6 +20,10 @@ interface Person {
 export default class LeafletMap extends Vue {
   mounted () {
     const L = require('leaflet');
+    L.Icon.Default.prototype.options.imagePath = '_nuxt/assets/'
+    L.Icon.Default.prototype.options.iconUrl = 'marker-icon.png'
+    L.Icon.Default.prototype.options.iconRetinaUrl = 'marker-icon-2x.png'
+    L.Icon.Default.prototype.options.shadowUrl = 'marker-shadow.png'
     let mymap = L.map('mapid').setView([48.85658, 2.35183], 10);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
