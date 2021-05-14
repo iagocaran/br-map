@@ -19,7 +19,7 @@ const myServerMiddleware: ServerMiddleware = async function (req, res, next) {
   await client.connect();
   if (req.method === "POST") {
     let location = req.body["Número"] + " " + req.body["Rua"] + ", " + req.body["Código Postal"] + " " + req.body["Cidade"] + ", " + req.body["País"]
-    let url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + location + ".json?limit=1&access_token=" + process.env.NUXT_ENV_MAPBOX_API_KEY
+    let url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + location + ".json?limit=1&access_token=" + process.env.MAPBOX_SERVER_API_KEY
     const mapbox = await axios.get(url)
     let [ long, lat ] = mapbox.data.features[0].center
     let query = "INSERT INTO people(name, phone, address, lat, long) VALUES($1, $2, $3, $4, $5)"
